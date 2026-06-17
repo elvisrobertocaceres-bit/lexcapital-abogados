@@ -1,0 +1,1933 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LexCapital Abogados — Recuperación de Capital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- Mgid Sensor -->
+  <script type="text/javascript">
+    (function() {
+      var d = document, w = window;
+      w.MgSensorData = w.MgSensorData || [];
+      w.MgSensorData.push({ cid: 980270, project: "a.mgid.com" });
+      var l = "a.mgid.com";
+      var n = d.getElementsByTagName("script")[0];
+      var s = d.createElement("script");
+      s.type = "text/javascript";
+      s.async = true;
+      var dt = !Date.now ? new Date().valueOf() : Date.now();
+      s.src = "https://" + l + "/mgsensor.js?d=" + dt;
+      n.parentNode.insertBefore(s, n);
+    })();
+  </script>
+  <!-- /Mgid Sensor -->
+  <style>
+    /* ========================
+       RESET & VARIABLES
+    ======================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white:   #FFFFFF;
+      --cream:   #F4F2EE;
+      --cream2:  #F0EDE7;
+      --gold:    #8B6914;
+      --gold-lt: #A67C1A;
+      --dark:    #1A1612;
+      --sec:     #5A5248;
+      --red:     #C0392B;
+      --shadow:  0 4px 24px rgba(0,0,0,.10);
+      --radius:  10px;
+      --font-title: 'Playfair Display', Georgia, serif;
+      --font-body:  'Inter', system-ui, sans-serif;
+      --mono: 'Courier New', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--dark); background: var(--white); line-height: 1.6; }
+    img { max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: var(--font-body); }
+    input, select, textarea { font-family: var(--font-body); }
+
+    /* ========================
+       UTILITY
+    ======================== */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .section-pad { padding: 88px 0; }
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: .8rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: var(--font-title);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.25;
+      margin-bottom: 18px;
+    }
+    .gold-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 22px 0;
+    }
+    .gold-line span.bar { display: block; width: 54px; height: 2px; background: var(--gold); }
+    .gold-line span.diamond {
+      display: block; width: 8px; height: 8px;
+      background: var(--gold);
+      transform: rotate(45deg);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 6px;
+      font-size: .9rem;
+      font-weight: 600;
+      transition: .2s;
+      border: 2px solid transparent;
+    }
+    .btn-gold { background: var(--gold); color: var(--white); border-color: var(--gold); }
+    .btn-gold:hover { background: var(--gold-lt); border-color: var(--gold-lt); }
+    .btn-outline { background: transparent; color: var(--dark); border-color: var(--dark); }
+    .btn-outline:hover { background: var(--dark); color: var(--white); }
+    .card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); }
+
+    /* ========================
+       NAV
+    ======================== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(255,255,255,.88);
+      border-bottom: 1px solid rgba(139,105,20,.15);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      font-family: var(--font-title);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: .88rem;
+      font-weight: 500;
+      color: var(--sec);
+      transition: color .2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--gold); }
+    .nav-cta { margin-left: 12px; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: 6px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--dark);
+      transition: .3s;
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--white);
+      padding: 16px 24px 24px;
+      gap: 16px;
+      border-top: 1px solid var(--cream);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: .95rem;
+      font-weight: 500;
+      color: var(--sec);
+      padding: 6px 0;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    /* ========================
+       HERO
+    ======================== */
+    #hero {
+      padding: 120px 0 80px;
+      background: var(--white);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .hero-title {
+      font-family: var(--font-title);
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0;
+    }
+    .hero-sub { color: var(--sec); margin-bottom: 30px; font-size: 1.02rem; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* Hero Form Card — oculto en desktop (reemplazado por el panel fijo) */
+    .hero-form-col { display: none; }
+    .hero-form-card {
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.12);
+      padding: 36px 32px;
+    }
+
+    /* Panel fijo derecha — desktop */
+    #fixed-form-panel {
+      position: fixed;
+      top: 80px;
+      right: 0;
+      width: 360px;
+      max-height: calc(100vh - 96px);
+      overflow-y: auto;
+      z-index: 800;
+      background: var(--white);
+      border-radius: 14px 0 0 14px;
+      box-shadow: -6px 0 32px rgba(0,0,0,.13);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      transition: transform .35s cubic-bezier(.4,0,.2,1);
+    }
+    #fixed-form-panel.collapsed {
+      transform: translateX(calc(100% - 42px));
+    }
+    .fixed-panel-toggle {
+      position: absolute;
+      left: -42px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--gold);
+      color: var(--white);
+      border: none;
+      border-radius: 8px 0 0 8px;
+      width: 42px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: -3px 0 12px rgba(139,105,20,.35);
+      font-size: .72rem;
+      font-weight: 700;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      letter-spacing: .08em;
+      gap: 0;
+    }
+    #fixed-form-panel h3 {
+      font-family: var(--font-title);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    #fixed-form-panel > p {
+      font-size: .8rem;
+      color: var(--sec);
+      margin-bottom: 16px;
+    }
+
+    /* Botón flotante mobile para abrir el formulario */
+    #float-form-btn {
+      display: none;
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 940;
+      background: var(--gold);
+      color: var(--white);
+      border: none;
+      border-radius: 30px;
+      padding: 14px 28px;
+      font-size: .92rem;
+      font-weight: 700;
+      box-shadow: 0 6px 24px rgba(139,105,20,.5);
+      white-space: nowrap;
+      animation: pulse-btn 2s infinite;
+    }
+    @keyframes pulse-btn {
+      0%, 100% { box-shadow: 0 6px 24px rgba(139,105,20,.5); }
+      50%       { box-shadow: 0 6px 36px rgba(139,105,20,.8); }
+    }
+
+    /* Panel flotante mobile */
+    #float-form-panel {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 960;
+      background: rgba(0,0,0,.55);
+      align-items: flex-end;
+      justify-content: center;
+    }
+    #float-form-panel.open { display: flex; }
+    .float-panel-inner {
+      background: var(--white);
+      border-radius: 18px 18px 0 0;
+      padding: 24px 20px 32px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .float-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .float-panel-header h3 {
+      font-family: var(--font-title);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .float-panel-close {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      color: var(--sec);
+      line-height: 1;
+    }
+    .hero-form-card h3 {
+      font-family: var(--font-title);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .hero-form-card p { font-size: .85rem; color: var(--sec); margin-bottom: 22px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
+    .form-group label { font-size: .8rem; font-weight: 600; color: var(--sec); }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      border: 1.5px solid #DDD;
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: .88rem;
+      color: var(--dark);
+      transition: border-color .2s;
+      background: #FAFAFA;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: var(--white);
+    }
+    .form-group textarea { resize: vertical; min-height: 72px; }
+    /* Phone with country code */
+    .phone-group { display: flex; gap: 6px; }
+    .phone-group select.country-code {
+      width: 108px;
+      flex-shrink: 0;
+      border: 1.5px solid #DDD;
+      border-radius: 6px;
+      padding: 10px 8px;
+      font-size: .82rem;
+      color: var(--dark);
+      background: #FAFAFA;
+      transition: border-color .2s;
+      cursor: pointer;
+    }
+    .phone-group select.country-code:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: var(--white);
+    }
+    .phone-group input[type=tel] {
+      flex: 1;
+      min-width: 0;
+    }
+    .checkbox-row { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 14px; }
+    .checkbox-row input[type=checkbox] { margin-top: 3px; accent-color: var(--gold); flex-shrink: 0; }
+    .checkbox-row label { font-size: .8rem; color: var(--sec); line-height: 1.5; }
+    .checkbox-row label a { color: var(--gold); text-decoration: underline; }
+    .submit-full { width: 100%; padding: 14px; font-size: .95rem; font-weight: 600; border-radius: 6px; }
+    .success-screen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      gap: 16px;
+    }
+    .success-screen h3 { font-family: var(--font-title); font-size: 1.4rem; }
+    .success-screen p { color: var(--sec); font-size: .9rem; }
+
+    /* ========================
+       STATS STRIP
+    ======================== */
+    #stats {
+      background: var(--cream);
+      padding: 52px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: var(--mono);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+      line-height: 1.1;
+    }
+    .stat-label {
+      font-size: .84rem;
+      color: var(--sec);
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    /* ========================
+       ALERT BANNER
+    ======================== */
+    .alert-banner {
+      background: #FFF5F5;
+      border-left: 5px solid var(--red);
+      padding: 18px 24px;
+      border-radius: 6px;
+      margin: 40px 0 0;
+    }
+    .alert-banner strong { color: var(--red); font-size: .88rem; display: block; margin-bottom: 4px; }
+    .alert-banner p { font-size: .88rem; color: #7A2020; line-height: 1.6; }
+
+    /* ========================
+       NOSOTROS
+    ======================== */
+    #nosotros .section-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .features { display: flex; flex-direction: column; gap: 20px; margin-top: 28px; }
+    .feature {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .feature-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+    .feature-text h4 { font-weight: 600; font-size: .95rem; margin-bottom: 4px; }
+    .feature-text p { font-size: .85rem; color: var(--sec); }
+    .quote-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 38px 32px;
+      position: relative;
+    }
+    .quote-mark {
+      font-family: var(--font-title);
+      font-size: 6rem;
+      color: var(--gold);
+      opacity: .18;
+      position: absolute;
+      top: 8px;
+      left: 20px;
+      line-height: 1;
+    }
+    .quote-text {
+      font-family: var(--font-title);
+      font-style: italic;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--dark);
+      position: relative;
+      z-index: 1;
+      margin-bottom: 22px;
+    }
+    .quote-author { font-size: .85rem; color: var(--sec); }
+    .quote-author strong { display: block; color: var(--dark); font-weight: 600; }
+
+    /* ========================
+       PROCESO
+    ======================== */
+    #proceso { background: var(--white); }
+    .proceso-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .fase-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1.5px solid #EAE7E0;
+      padding: 28px 22px;
+      transition: box-shadow .2s, border-color .2s;
+    }
+    .fase-card:hover { box-shadow: var(--shadow); border-color: var(--gold); }
+    .fase-num {
+      font-family: var(--mono);
+      font-size: .78rem;
+      color: var(--gold);
+      letter-spacing: .1em;
+      margin-bottom: 12px;
+    }
+    .fase-icon { font-size: 1.6rem; margin-bottom: 12px; display: block; }
+    .fase-title {
+      font-family: var(--font-title);
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .fase-desc { font-size: .85rem; color: var(--sec); line-height: 1.6; }
+
+    /* ========================
+       BROKERS
+    ======================== */
+    #brokers { background: var(--cream); }
+    .brokers-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .brokers-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .broker-tag {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--white);
+      border-radius: 30px;
+      padding: 7px 14px;
+      font-size: .84rem;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(0,0,0,.07);
+    }
+    .broker-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
+    .reg-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 24px;
+    }
+    .reg-card h4 {
+      font-family: var(--font-title);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      color: var(--dark);
+    }
+    .reg-badges { display: flex; flex-wrap: wrap; gap: 10px; }
+    .reg-badge {
+      font-family: var(--mono);
+      font-size: .8rem;
+      letter-spacing: .06em;
+      background: var(--cream);
+      border: 1.5px solid #D4C9A8;
+      color: var(--gold);
+      border-radius: 4px;
+      padding: 5px 12px;
+      font-weight: 700;
+    }
+    .reg-note { font-size: .8rem; color: var(--sec); margin-top: 16px; line-height: 1.6; }
+
+    /* ========================
+       TESTIMONIOS
+    ======================== */
+    #testimonios { background: var(--white); }
+    .testimonios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonio-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 30px 26px;
+      position: relative;
+    }
+    .testi-quote {
+      font-family: var(--font-title);
+      font-size: 4rem;
+      color: var(--gold);
+      opacity: .25;
+      position: absolute;
+      top: 10px;
+      left: 18px;
+      line-height: 1;
+    }
+    .testi-text {
+      font-family: var(--font-title);
+      font-style: italic;
+      font-size: .95rem;
+      line-height: 1.7;
+      color: var(--dark);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .testi-sep {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .testi-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+    .testi-name { font-weight: 600; font-size: .88rem; }
+    .testi-city { font-size: .8rem; color: var(--sec); }
+    .testi-amount {
+      font-family: var(--mono);
+      font-size: .82rem;
+      color: var(--gold);
+      background: #F9F5EB;
+      border: 1px solid #D4C9A8;
+      border-radius: 4px;
+      padding: 4px 10px;
+      display: inline-block;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    /* ========================
+       CONTACTO
+    ======================== */
+    #contacto { background: var(--cream); }
+    .contacto-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .contact-form-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 38px 32px;
+    }
+    .contact-form-card h3 {
+      font-family: var(--font-title);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .contact-form-card > p { font-size: .85rem; color: var(--sec); margin-bottom: 22px; }
+    .privacy-box {
+      border: 1.5px solid #DDD;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 200px;
+      overflow-y: auto;
+      font-size: .78rem;
+      color: var(--sec);
+      line-height: 1.7;
+      margin-bottom: 14px;
+      background: #FAFAFA;
+    }
+    .privacy-box h5 { color: var(--dark); font-weight: 700; margin: 10px 0 4px; font-size: .8rem; }
+    .privacy-box h5:first-child { margin-top: 0; }
+    .disclaimer {
+      font-size: .75rem;
+      color: var(--sec);
+      margin-top: 12px;
+      line-height: 1.6;
+      border-top: 1px solid #EEE;
+      padding-top: 12px;
+    }
+    .contact-sidebar { display: flex; flex-direction: column; gap: 20px; }
+    .urgency-box {
+      background: #FFF0F0;
+      border: 1.5px solid #E0A0A0;
+      border-radius: var(--radius);
+      padding: 22px 20px;
+    }
+    .urgency-box h4 {
+      color: var(--red);
+      font-weight: 700;
+      font-size: .95rem;
+      margin-bottom: 8px;
+    }
+    .urgency-box p { font-size: .84rem; color: #7A2020; line-height: 1.6; }
+    .why-box {
+      background: var(--white);
+      border: 1.5px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+    }
+    .why-box h4 {
+      color: var(--gold);
+      font-family: var(--font-title);
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+    .why-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .why-box li { font-size: .84rem; color: var(--sec); display: flex; gap: 8px; }
+    .why-box li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+    .contact-info-box {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px 20px;
+    }
+    .contact-info-box h4 {
+      font-family: var(--font-title);
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 16px;
+      color: var(--dark);
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: .86rem;
+    }
+    .contact-item span.ci-label { color: var(--sec); width: 80px; flex-shrink: 0; font-size: .78rem; }
+    .contact-item span.ci-val { color: var(--dark); font-weight: 500; }
+
+    /* ========================
+       FOOTER
+    ======================== */
+    footer {
+      background: var(--cream2);
+      border-top: 1px solid #DDD8CE;
+      padding: 40px 0 28px;
+    }
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+    }
+    .footer-logo {
+      font-family: var(--font-title);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .footer-logo span { color: var(--gold); }
+    .footer-disclaimer {
+      font-size: .78rem;
+      color: var(--sec);
+      max-width: 620px;
+      line-height: 1.7;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .footer-links a {
+      font-size: .8rem;
+      color: var(--sec);
+      border-bottom: 1px solid transparent;
+      transition: .2s;
+    }
+    .footer-links a:hover { color: var(--gold); border-color: var(--gold); }
+    .footer-copy { font-size: .75rem; color: #9A9088; }
+
+    /* ========================
+       CHATBOT
+    ======================== */
+    #chat-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 950;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--white);
+      border: none;
+      box-shadow: 0 4px 18px rgba(139,105,20,.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .2s, background .2s;
+    }
+    #chat-btn:hover { background: var(--gold-lt); transform: scale(1.07); }
+    #chat-bubble {
+      position: fixed;
+      bottom: 100px;
+      right: 28px;
+      z-index: 950;
+      width: 360px;
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.18);
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+      max-height: 520px;
+    }
+    #chat-bubble.open { display: flex; }
+    .chat-header {
+      background: var(--gold);
+      color: var(--white);
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .chat-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.25);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-title);
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .chat-header-info h4 { font-size: .9rem; font-weight: 600; }
+    .chat-header-info span { font-size: .75rem; opacity: .85; }
+    .chat-close {
+      margin-left: auto;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.2rem;
+      opacity: .8;
+      transition: opacity .2s;
+    }
+    .chat-close:hover { opacity: 1; }
+    .chat-messages {
+      background: #F8F6F2;
+      flex: 1;
+      overflow-y: auto;
+      padding: 18px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .chat-msg {
+      max-width: 84%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: .84rem;
+      line-height: 1.55;
+      animation: fadeUp .3s ease;
+    }
+    .chat-msg.bot {
+      background: var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,.07);
+      border-bottom-left-radius: 3px;
+      align-self: flex-start;
+    }
+    .chat-msg.user {
+      background: var(--gold);
+      color: var(--white);
+      align-self: flex-end;
+      border-bottom-right-radius: 3px;
+    }
+    .typing-indicator {
+      display: flex;
+      gap: 5px;
+      padding: 10px 14px;
+      background: var(--white);
+      border-radius: 12px;
+      border-bottom-left-radius: 3px;
+      width: fit-content;
+      box-shadow: 0 2px 8px rgba(0,0,0,.07);
+    }
+    .typing-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #C0B8A8;
+      animation: bounce 1.2s infinite;
+    }
+    .typing-dot:nth-child(2) { animation-delay: .2s; }
+    .typing-dot:nth-child(3) { animation-delay: .4s; }
+    @keyframes bounce {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-6px); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .chat-input-row {
+      display: flex;
+      border-top: 1px solid #EEE;
+      background: var(--white);
+    }
+    .chat-input-row input {
+      flex: 1;
+      border: none;
+      padding: 13px 14px;
+      font-size: .88rem;
+      color: var(--dark);
+      outline: none;
+    }
+    .chat-send {
+      background: var(--gold);
+      border: none;
+      color: var(--white);
+      padding: 0 18px;
+      font-size: .85rem;
+      font-weight: 600;
+      transition: background .2s;
+    }
+    .chat-send:hover { background: var(--gold-lt); }
+
+    /* ========================
+       TOAST
+    ======================== */
+    #toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #1A1612;
+      color: #FFF;
+      padding: 13px 24px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 500;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s, transform .3s;
+      white-space: nowrap;
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ========================
+       LEADS PANEL (hidden)
+    ======================== */
+    #leads-panel {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.7);
+      z-index: 9998;
+      align-items: center;
+      justify-content: center;
+    }
+    #leads-panel.open { display: flex; }
+    .leads-inner {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 32px;
+      max-width: 800px;
+      width: 95%;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .leads-inner h2 {
+      font-family: var(--font-title);
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #leads-table { width: 100%; border-collapse: collapse; font-size: .8rem; }
+    #leads-table th, #leads-table td {
+      border: 1px solid #EEE;
+      padding: 7px 10px;
+      text-align: left;
+    }
+    #leads-table th { background: var(--cream); font-weight: 700; }
+
+    /* ========================
+       HUBSPOT AREA
+    ======================== */
+    .hs-wrapper { min-height: 60px; }
+
+    /* ========================
+       RESPONSIVE
+    ======================== */
+    @media (max-width: 900px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-grid,
+      #nosotros .section-grid,
+      .brokers-grid,
+      .contacto-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .proceso-grid { grid-template-columns: 1fr 1fr; }
+      .testimonios-grid { grid-template-columns: 1fr; }
+      .hero-form-col { display: none; }
+      /* En mobile: ocultar panel fijo y mostrar botón flotante */
+      #fixed-form-panel { display: none !important; }
+      #float-form-btn { display: block; }
+      #chat-bubble { width: calc(100vw - 40px); right: 20px; }
+    }
+    @media (max-width: 560px) {
+      .proceso-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========================
+     NAV
+======================== -->
+<nav id="main-nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Lex<span>Capital</span> Abogados</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#brokers">Brokers</a></li>
+        <li><a href="#testimonios">Casos</a></li>
+      </ul>
+      <a href="#contacto" class="btn btn-gold nav-cta">Consulta Gratuita</a>
+      <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#contacto" class="btn btn-gold" style="text-align:center" onclick="toggleMobile()">Consulta Gratuita</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ========================
+     HERO
+======================== -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Left -->
+      <div>
+        <p class="eyebrow">Abogados especializados en fraude financiero</p>
+        <h1 class="hero-title">¿Le estafaron en un broker? Recuperamos su dinero.</h1>
+        <div class="gold-line"><span class="bar"></span><span class="diamond"></span></div>
+        <p class="hero-sub">Sin honorarios anticipados. Solo cobramos si recuperamos su capital.</p>
+        <div class="hero-btns">
+          <a href="#contacto" class="btn btn-gold">Consulta gratuita</a>
+          <a href="#proceso" class="btn btn-outline">Cómo funciona</a>
+        </div>
+        <div class="alert-banner" style="margin-top:28px">
+          <strong>⚠ Los plazos para reclamar son limitados</strong>
+          <p>Según la jurisdicción, el derecho prescribe entre <strong>2 y 5 años</strong>. No espere más.</p>
+        </div>
+      </div>
+
+      <!-- Right: Hero Form -->
+      <div class="hero-form-col">
+        <div class="hero-form-card" id="hero-form-wrap">
+          <h3>Evaluación gratuita de su caso</h3>
+          <p>Completa el formulario y un especialista se pondrá en contacto en menos de 24 horas.</p>
+          <form id="hero-form" onsubmit="handleHeroSubmit(event)" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="h-nombre">Nombre *</label>
+                <input type="text" id="h-nombre" placeholder="Juan" required />
+              </div>
+              <div class="form-group">
+                <label for="h-apellido">Apellido *</label>
+                <input type="text" id="h-apellido" placeholder="García" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="h-email">Email *</label>
+                <input type="email" id="h-email" placeholder="juan@email.com" required />
+              </div>
+              <div class="form-group">
+                <label for="h-tel">Teléfono *</label>
+                <div class="phone-group">
+                  <select class="country-code" id="h-code" aria-label="Código de país">
+                    <option value="+54">🇦🇷 +54</option>
+                    <option value="+591">🇧🇴 +591</option>
+                    <option value="+55">🇧🇷 +55</option>
+                    <option value="+56">🇨🇱 +56</option>
+                    <option value="+57">🇨🇴 +57</option>
+                    <option value="+506">🇨🇷 +506</option>
+                    <option value="+53">🇨🇺 +53</option>
+                    <option value="+593">🇪🇨 +593</option>
+                    <option value="+503">🇸🇻 +503</option>
+                    <option value="+34" selected>🇪🇸 +34</option>
+                    <option value="+1">🇺🇸 +1</option>
+                    <option value="+502">🇬🇹 +502</option>
+                    <option value="+504">🇭🇳 +504</option>
+                    <option value="+52">🇲🇽 +52</option>
+                    <option value="+505">🇳🇮 +505</option>
+                    <option value="+507">🇵🇦 +507</option>
+                    <option value="+595">🇵🇾 +595</option>
+                    <option value="+51">🇵🇪 +51</option>
+                    <option value="+1-787">🇵🇷 +1787</option>
+                    <option value="+1-809">🇩🇴 +1809</option>
+                    <option value="+598">🇺🇾 +598</option>
+                    <option value="+58">🇻🇪 +58</option>
+                    <option value="+44">🇬🇧 +44</option>
+                    <option value="+49">🇩🇪 +49</option>
+                    <option value="+33">🇫🇷 +33</option>
+                    <option value="+39">🇮🇹 +39</option>
+                    <option value="+351">🇵🇹 +351</option>
+                    <option value="+31">🇳🇱 +31</option>
+                    <option value="+41">🇨🇭 +41</option>
+                    <option value="+61">🇦🇺 +61</option>
+                    <option value="+64">🇳🇿 +64</option>
+                  </select>
+                  <input type="tel" id="h-tel" placeholder="600 000 000" required />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="h-capital">Capital perdido aproximado *</label>
+              <select id="h-capital" required>
+                <option value="">Seleccione un rango</option>
+                <option value="1k-10k">$1.000 – $10.000</option>
+                <option value="10k-25k">$10.000 – $25.000</option>
+                <option value="25k-50k">$25.000 – $50.000</option>
+                <option value="50k-100k">$50.000 – $100.000</option>
+                <option value="100k+">Más de $100.000</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="h-broker">Broker / plataforma *</label>
+              <input type="text" id="h-broker" placeholder="Nombre del broker o plataforma" required />
+            </div>
+            <div class="form-group">
+              <label for="h-info">Información adicional</label>
+              <textarea id="h-info" placeholder="Describa brevemente lo ocurrido..."></textarea>
+            </div>
+            <div class="checkbox-row">
+              <input type="checkbox" id="h-privacy" required />
+              <label for="h-privacy">He leído y acepto la <a href="#contacto">política de privacidad</a>. Consiento el tratamiento de mis datos para gestionar mi consulta. *</label>
+            </div>
+            <button type="submit" class="btn btn-gold submit-full" id="hero-submit-btn">Solicitar evaluación gratuita</button>
+          </form>
+          <div class="success-screen" id="hero-success">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="30" stroke="#8B6914" stroke-width="2.5" fill="#FBF7ED"/>
+              <path d="M20 32.5L28.5 41L44 24" stroke="#8B6914" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h3>¡Solicitud recibida!</h3>
+            <p>Un especialista de LexCapital se pondrá en contacto con usted en menos de 24 horas para analizar su caso de forma totalmente confidencial.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================
+     STATS
+======================== -->
+<section id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div>
+        <span class="stat-num">Millones</span>
+        <p class="stat-label">en capital recuperado</p>
+      </div>
+      <div>
+        <span class="stat-num">Miles</span>
+        <p class="stat-label">de casos gestionados</p>
+      </div>
+      <div>
+        <span class="stat-num">Alta</span>
+        <p class="stat-label">tasa de recuperación</p>
+      </div>
+      <div>
+        <span class="stat-num">+30</span>
+        <p class="stat-label">jurisdicciones activas</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================
+     NOSOTROS
+======================== -->
+<section id="nosotros" class="section-pad">
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto 44px">
+      <p class="eyebrow">Por qué elegirnos</p>
+      <h2 class="section-title">Especialistas en recuperar lo que creía perdido</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+      <div class="fase-card" style="text-align:center">
+        <span class="fase-icon">⚖️</span>
+        <h3 class="fase-title">32 jurisdicciones</h3>
+        <p class="fase-desc">Abogados homologados ante FCA, SEC, CNMV, CySEC y más reguladores internacionales.</p>
+      </div>
+      <div class="fase-card" style="text-align:center">
+        <span class="fase-icon">🔍</span>
+        <h3 class="fase-title">Forense financiero</h3>
+        <p class="fase-desc">Rastreamos fondos vía blockchain y peritajes bancarios para construir su expediente.</p>
+      </div>
+      <div class="fase-card" style="text-align:center">
+        <span class="fase-icon">🤝</span>
+        <h3 class="fase-title">Sin coste inicial</h3>
+        <p class="fase-desc">Honorarios solo si recuperamos su capital. Sin letra pequeña, sin sorpresas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================
+     PROCESO
+======================== -->
+<section id="proceso" class="section-pad" style="background:var(--cream)">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:44px">
+      <p class="eyebrow">Cómo funciona</p>
+      <h2 class="section-title">4 pasos para recuperar su capital</h2>
+    </div>
+    <div class="proceso-grid">
+      <div class="fase-card">
+        <div class="fase-num">01</div>
+        <span class="fase-icon">🔎</span>
+        <h3 class="fase-title">Diagnóstico gratis</h3>
+        <p class="fase-desc">Evaluamos su caso sin coste. Informe preliminar en 48h.</p>
+      </div>
+      <div class="fase-card">
+        <div class="fase-num">02</div>
+        <span class="fase-icon">📂</span>
+        <h3 class="fase-title">Expediente</h3>
+        <p class="fase-desc">Recopilamos evidencias y trazamos el rastro digital de los fondos.</p>
+      </div>
+      <div class="fase-card">
+        <div class="fase-num">03</div>
+        <span class="fase-icon">🏛️</span>
+        <h3 class="fase-title">Reclamación</h3>
+        <p class="fase-desc">Presentamos la denuncia ante FCA, SEC, CNMV y reguladores competentes.</p>
+      </div>
+      <div class="fase-card">
+        <div class="fase-num">04</div>
+        <span class="fase-icon">💰</span>
+        <h3 class="fase-title">Recuperación</h3>
+        <p class="fase-desc">Acción legal y restitución efectiva de su capital.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================
+     BROKERS
+======================== -->
+<section id="brokers" class="section-pad">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:36px">
+      <p class="eyebrow">Plataformas con casos activos</p>
+      <h2 class="section-title">¿Su broker está en la lista?</h2>
+      <p style="color:var(--sec);font-size:.9rem;margin-top:10px">Si no aparece, contáctenos de todas formas — trabajamos con cualquier plataforma.</p>
+    </div>
+    <div class="brokers-list" style="justify-content:center;margin-bottom:36px">
+      <span class="broker-tag"><span class="broker-dot"></span>IQ Option</span>
+      <span class="broker-tag"><span class="broker-dot"></span>FTX</span>
+      <span class="broker-tag"><span class="broker-dot"></span>Binomo</span>
+      <span class="broker-tag"><span class="broker-dot"></span>Olymp Trade</span>
+      <span class="broker-tag"><span class="broker-dot"></span>Pocket Option</span>
+      <span class="broker-tag"><span class="broker-dot"></span>Quotex</span>
+      <span class="broker-tag"><span class="broker-dot"></span>Expert Option</span>
+      <span class="broker-tag"><span class="broker-dot"></span>MarketsWorld</span>
+      <span class="broker-tag"><span class="broker-dot"></span>Plataformas DeFi</span>
+      <span class="broker-tag"><span class="broker-dot"></span>Brokers no regulados</span>
+    </div>
+    <div style="text-align:center">
+      <div class="reg-badges" style="justify-content:center">
+        <span class="reg-badge">FCA</span>
+        <span class="reg-badge">FTC</span>
+        <span class="reg-badge">ASIC</span>
+        <span class="reg-badge">CySEC</span>
+        <span class="reg-badge">CNMV</span>
+        <span class="reg-badge">SEC</span>
+        <span class="reg-badge">FINMA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================
+     TESTIMONIOS
+======================== -->
+<section id="testimonios" class="section-pad" style="background:var(--cream)">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:36px">
+      <p class="eyebrow">Casos resueltos</p>
+      <h2 class="section-title">Clientes que recuperaron su capital</h2>
+    </div>
+    <div class="testimonios-grid" style="grid-template-columns:repeat(2,1fr)">
+      <div class="testimonio-card">
+        <span class="testi-quote">"</span>
+        <p class="testi-text">Creí que nunca vería ese dinero. En 8 meses LexCapital recuperó prácticamente la totalidad de mi capital sin pedirme nada por adelantado.</p>
+        <div class="testi-sep"><span class="testi-dot"></span><div><div class="testi-name">V.M.</div><div class="testi-city">Buenos Aires, Argentina</div></div></div>
+        <span class="testi-amount">Capital recuperado ✓</span>
+      </div>
+      <div class="testimonio-card">
+        <span class="testi-quote">"</span>
+        <p class="testi-text">El broker bloqueó mi cuenta. Pensé que era un caso perdido. En menos de un año LexCapital logró la recuperación completa.</p>
+        <div class="testi-sep"><span class="testi-dot"></span><div><div class="testi-name">C.H.</div><div class="testi-city">Bogotá, Colombia</div></div></div>
+        <span class="testi-amount">Capital recuperado ✓</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================
+     CONTACTO (info solo, sin formulario)
+======================== -->
+<section id="contacto" class="section-pad" style="background:var(--cream)">
+  <div class="container" style="text-align:center">
+    <p class="eyebrow">Contáctenos</p>
+    <h2 class="section-title" style="margin-bottom:32px">Estamos disponibles para usted</h2>
+    <div style="display:inline-flex;flex-wrap:wrap;gap:24px;justify-content:center">
+      <div class="contact-info-box" style="min-width:260px;text-align:left">
+        <div class="contact-item"><span class="ci-label">Email</span><span class="ci-val">consultas@lexcapital.com</span></div>
+        <div class="contact-item"><span class="ci-label">Respuesta</span><span class="ci-val">Menos de 24 horas</span></div>
+        <div class="contact-item"><span class="ci-label">Honorarios</span><span class="ci-val">Solo si recuperamos</span></div>
+      </div>
+    </div>
+    <div style="margin-top:32px">
+      <a href="#" onclick="document.getElementById('fixed-form-panel').classList.remove('collapsed');return false;" class="btn btn-gold">Solicitar consulta gratuita →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================
+     FOOTER
+======================== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">Lex<span>Capital</span> Abogados</div>
+      <p class="footer-disclaimer">
+        LexCapital Abogados es un consorcio jurídico especializado en recuperación de activos frente a plataformas financieras fraudulentas. Los resultados pasados no garantizan resultados futuros. Cada caso es evaluado individualmente según sus circunstancias. La información contenida en este sitio tiene carácter meramente informativo y no constituye asesoramiento jurídico. La contratación de servicios jurídicos está sujeta a la firma de un contrato de representación. Sin honorarios anticipados: solo cobramos si recuperamos su capital.
+      </p>
+      <div class="footer-links">
+        <a href="#privacy-policy-text">Política de privacidad</a>
+        <a href="#">Aviso legal</a>
+        <a href="#">Protección de datos</a>
+      </div>
+      <p class="footer-copy">© 2025 LexCapital Abogados S.L. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ========================
+     PANEL FIJO DERECHA — DESKTOP
+======================== -->
+<div id="fixed-form-panel" class="collapsed">
+  <button class="fixed-panel-toggle" onclick="toggleFixedPanel()" id="fixed-panel-toggle-btn" aria-label="Abrir/cerrar formulario">CONSULTA GRATIS</button>
+  <h3>Evaluación gratuita</h3>
+  <p>Un especialista le contactará en menos de 24 horas.</p>
+  <form id="fixed-form" onsubmit="handleFixedSubmit(event)" novalidate>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="fx-nombre">Nombre *</label>
+        <input type="text" id="fx-nombre" placeholder="Juan" required />
+      </div>
+      <div class="form-group">
+        <label for="fx-apellido">Apellido *</label>
+        <input type="text" id="fx-apellido" placeholder="García" required />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="fx-email">Email *</label>
+      <input type="email" id="fx-email" placeholder="juan@email.com" required />
+    </div>
+    <div class="form-group">
+      <label for="fx-tel">Teléfono / WhatsApp *</label>
+      <div class="phone-group">
+        <select class="country-code" id="fx-code" aria-label="Código de país">
+          <option value="+54">🇦🇷 +54</option>
+          <option value="+55">🇧🇷 +55</option>
+          <option value="+56">🇨🇱 +56</option>
+          <option value="+57">🇨🇴 +57</option>
+          <option value="+34" selected>🇪🇸 +34</option>
+          <option value="+52">🇲🇽 +52</option>
+          <option value="+51">🇵🇪 +51</option>
+          <option value="+598">🇺🇾 +598</option>
+          <option value="+58">🇻🇪 +58</option>
+          <option value="+1">🇺🇸 +1</option>
+        </select>
+        <input type="tel" id="fx-tel" placeholder="600 000 000" required />
+      </div>
+    </div>
+    <div class="checkbox-row">
+      <input type="checkbox" id="fx-privacy" required />
+      <label for="fx-privacy">Acepto la <a href="#contacto">política de privacidad</a>. *</label>
+    </div>
+    <button type="submit" class="btn btn-gold submit-full">Consulta gratuita →</button>
+  </form>
+  <div class="success-screen" id="fixed-success">
+    <svg width="56" height="56" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="#8B6914" stroke-width="2.5" fill="#FBF7ED"/><path d="M20 32.5L28.5 41L44 24" stroke="#8B6914" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <h3>¡Solicitud recibida!</h3>
+    <p>Un especialista le contactará en menos de 24 horas.</p>
+  </div>
+</div>
+
+<!-- ========================
+     BOTÓN FLOTANTE MOBILE (formulario)
+======================== -->
+<button id="float-form-btn" onclick="openFloatForm()">📋 Evaluación gratuita</button>
+
+<!-- Panel deslizable mobile -->
+<div id="float-form-panel" onclick="closeFloatFormOutside(event)">
+  <div class="float-panel-inner">
+    <div class="float-panel-header">
+      <h3>Evaluación gratuita de su caso</h3>
+      <button class="float-panel-close" onclick="closeFloatForm()">✕</button>
+    </div>
+    <p style="font-size:.82rem;color:var(--sec);margin-bottom:16px">Un especialista le contactará en menos de 24 horas.</p>
+    <form id="float-form" onsubmit="handleFloatSubmit(event)" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="f-nombre">Nombre *</label>
+          <input type="text" id="f-nombre" placeholder="Juan" required />
+        </div>
+        <div class="form-group">
+          <label for="f-apellido">Apellido *</label>
+          <input type="text" id="f-apellido" placeholder="García" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="f-email">Email *</label>
+        <input type="email" id="f-email" placeholder="juan@email.com" required />
+      </div>
+      <div class="form-group">
+        <label for="f-tel">Teléfono *</label>
+        <div class="phone-group">
+          <select class="country-code" id="f-code" aria-label="Código de país">
+            <option value="+54">🇦🇷 +54</option>
+            <option value="+591">🇧🇴 +591</option>
+            <option value="+55">🇧🇷 +55</option>
+            <option value="+56">🇨🇱 +56</option>
+            <option value="+57">🇨🇴 +57</option>
+            <option value="+34" selected>🇪🇸 +34</option>
+            <option value="+52">🇲🇽 +52</option>
+            <option value="+51">🇵🇪 +51</option>
+            <option value="+598">🇺🇾 +598</option>
+            <option value="+58">🇻🇪 +58</option>
+            <option value="+1">🇺🇸 +1</option>
+          </select>
+          <input type="tel" id="f-tel" placeholder="600 000 000" required />
+        </div>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="f-privacy" required />
+        <label for="f-privacy">Acepto la <a href="#contacto">política de privacidad</a>. *</label>
+      </div>
+      <button type="submit" class="btn btn-gold submit-full">Consulta gratuita →</button>
+    </form>
+    <div class="success-screen" id="float-success">
+      <svg width="56" height="56" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="#8B6914" stroke-width="2.5" fill="#FBF7ED"/><path d="M20 32.5L28.5 41L44 24" stroke="#8B6914" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h3>¡Solicitud recibida!</h3>
+      <p>Un especialista le contactará en menos de 24 horas.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ========================
+     CHATBOT
+======================== -->
+<button id="chat-btn" onclick="toggleChat()" aria-label="Abrir chat">
+  <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 5C2 3.34315 3.34315 2 5 2H21C22.6569 2 24 3.34315 24 5V16C24 17.6569 22.6569 19 21 19H14.5L9 24V19H5C3.34315 19 2 17.6569 2 16V5Z" fill="white" opacity=".9"/>
+  </svg>
+</button>
+
+<div id="chat-bubble">
+  <div class="chat-header">
+    <div class="chat-avatar">LC</div>
+    <div class="chat-header-info">
+      <h4>Asesor LexCapital</h4>
+      <span>● En línea ahora</span>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-messages" id="chat-messages"></div>
+  <div class="chat-input-row">
+    <input type="text" id="chat-input" placeholder="Escriba su mensaje..." onkeydown="if(event.key==='Enter') chatSend()" />
+    <button class="chat-send" onclick="chatSend()">Enviar</button>
+  </div>
+</div>
+
+<!-- ========================
+     TOAST
+======================== -->
+<div id="toast"></div>
+
+<!-- ========================
+     LEADS PANEL
+======================== -->
+<div id="leads-panel">
+  <div class="leads-inner">
+    <h2>
+      Panel de Leads — LexCapital
+      <button onclick="closeLeadsPanel()" style="background:none;border:none;font-size:1.4rem;cursor:pointer">✕</button>
+    </h2>
+    <div id="leads-table-wrap"></div>
+  </div>
+</div>
+
+<!-- ========================
+     HUBSPOT SCRIPT
+======================== -->
+<script>
+  (function() {
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.id = 'hs-script-loader';
+    s.src = '//js.hsforms.net/forms/v2.js';
+    s.onload = function() {
+      if (window.hbspt) {
+        window.hbspt.forms.create({
+          portalId: '51405175',
+          formId: 'HUBSPOT_FORM_ID', // reemplazar con el ID del formulario real
+          target: '#hs-form-container',
+          onFormSubmit: function($form) {
+            showToast('Formulario enviado a HubSpot correctamente.');
+          }
+        });
+      }
+    };
+    document.head.appendChild(s);
+  })();
+</script>
+
+<!-- ========================
+     JAVASCRIPT PRINCIPAL
+======================== -->
+<script>
+/* ========================
+   PANEL FIJO DESKTOP
+======================== */
+var fixedPanelCollapsed = false;
+function toggleFixedPanel() {
+  fixedPanelCollapsed = !fixedPanelCollapsed;
+  var panel = document.getElementById('fixed-form-panel');
+  var btn   = document.getElementById('fixed-panel-toggle-btn');
+  panel.classList.toggle('collapsed', fixedPanelCollapsed);
+  btn.textContent = fixedPanelCollapsed ? 'CONSULTA GRATIS' : '✕ CERRAR';
+}
+
+function handleFixedSubmit(e) {
+  e.preventDefault();
+  var nombre   = document.getElementById('fx-nombre').value.trim();
+  var apellido = document.getElementById('fx-apellido').value.trim();
+  var email    = document.getElementById('fx-email').value.trim();
+  var tel      = document.getElementById('fx-code').value + ' ' + document.getElementById('fx-tel').value.trim();
+  var privacy  = document.getElementById('fx-privacy').checked;
+
+  if (!nombre || !apellido || !email || !tel) {
+    alert('Por favor complete todos los campos obligatorios (*).');
+    return;
+  }
+  if (!privacy) {
+    alert('Debe aceptar la política de privacidad para continuar.');
+    return;
+  }
+
+  saveLead({ origen: 'Panel Fijo Desktop', nombre, apellido, email, telefono: tel, capital: '', broker: '', info: '' });
+
+  fetch('/api/hubspot', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ firstname: nombre, lastname: apellido, email, phone: tel,
+      message: 'Broker: ' + broker + ' | Capital: ' + capital })
+  }).catch(function(){});
+
+  document.getElementById('fixed-form').style.display = 'none';
+  document.getElementById('fixed-success').style.display = 'flex';
+  showToast('¡Solicitud enviada! Le contactaremos en menos de 24h.');
+}
+
+/* ========================
+   PANEL FLOTANTE MOBILE
+======================== */
+function openFloatForm() {
+  document.getElementById('float-form-panel').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeFloatForm() {
+  document.getElementById('float-form-panel').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeFloatFormOutside(e) {
+  if (e.target === document.getElementById('float-form-panel')) closeFloatForm();
+}
+
+function handleFloatSubmit(e) {
+  e.preventDefault();
+  var nombre   = document.getElementById('f-nombre').value.trim();
+  var apellido = document.getElementById('f-apellido').value.trim();
+  var email    = document.getElementById('f-email').value.trim();
+  var tel      = document.getElementById('f-code').value + ' ' + document.getElementById('f-tel').value.trim();
+  var privacy  = document.getElementById('f-privacy').checked;
+
+  if (!nombre || !apellido || !email || !tel) {
+    alert('Por favor complete todos los campos obligatorios (*).');
+    return;
+  }
+  if (!privacy) {
+    alert('Debe aceptar la política de privacidad para continuar.');
+    return;
+  }
+
+  saveLead({ origen: 'Formulario Flotante', nombre, apellido, email, telefono: tel, capital: '', broker: '', info: '' });
+
+  fetch('/api/hubspot', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ firstname: nombre, lastname: apellido, email, phone: tel,
+      message: 'Broker: ' + broker + ' | Capital: ' + capital })
+  }).catch(function(){});
+
+  document.getElementById('float-form').style.display = 'none';
+  document.getElementById('float-success').style.display = 'flex';
+  showToast('¡Solicitud enviada! Le contactaremos en menos de 24h.');
+}
+
+/* ========================
+   LEADS — localStorage
+======================== */
+function saveLead(data) {
+  var leads = getLeads();
+  var lead = {
+    id: Date.now(),
+    fecha: new Date().toLocaleString('es-ES'),
+    origen: data.origen || 'Desconocido',
+    nombre: data.nombre || '',
+    apellido: data.apellido || '',
+    email: data.email || '',
+    telefono: data.telefono || '',
+    capital: data.capital || '',
+    broker: data.broker || '',
+    info: data.info || ''
+  };
+  leads.push(lead);
+  localStorage.setItem('lexcapital_leads', JSON.stringify(leads));
+  return lead;
+}
+
+function getLeads() {
+  try {
+    return JSON.parse(localStorage.getItem('lexcapital_leads')) || [];
+  } catch(e) { return []; }
+}
+
+/* ========================
+   TOAST
+======================== */
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function() { t.classList.remove('show'); }, 3500);
+}
+
+/* ========================
+   NAV ACTIVA AL SCROLL
+======================== */
+(function() {
+  var sections = document.querySelectorAll('section[id]');
+  var links = document.querySelectorAll('#nav-links a[href^="#"]');
+  function onScroll() {
+    var scrollY = window.scrollY + 100;
+    sections.forEach(function(sec) {
+      var top = sec.offsetTop;
+      var bottom = top + sec.offsetHeight;
+      var id = sec.getAttribute('id');
+      if (scrollY >= top && scrollY < bottom) {
+        links.forEach(function(a) {
+          a.classList.remove('active');
+          if (a.getAttribute('href') === '#' + id) a.classList.add('active');
+        });
+      }
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
+/* ========================
+   NAV MOBILE
+======================== */
+function toggleMobile() {
+  var menu = document.getElementById('mobile-menu');
+  menu.classList.toggle('open');
+}
+
+/* ========================
+   HERO FORM SUBMIT
+======================== */
+function handleHeroSubmit(e) {
+  e.preventDefault();
+  var nombre   = document.getElementById('h-nombre').value.trim();
+  var apellido = document.getElementById('h-apellido').value.trim();
+  var email    = document.getElementById('h-email').value.trim();
+  var tel      = document.getElementById('h-code').value + ' ' + document.getElementById('h-tel').value.trim();
+  var capital  = document.getElementById('h-capital').value;
+  var broker   = document.getElementById('h-broker').value.trim();
+  var info     = document.getElementById('h-info').value.trim();
+  var privacy  = document.getElementById('h-privacy').checked;
+
+  if (!nombre || !apellido || !email || !tel || !capital || !broker) {
+    alert('Por favor complete todos los campos obligatorios (*).');
+    return;
+  }
+  if (!privacy) {
+    alert('Debe aceptar la política de privacidad para continuar.');
+    return;
+  }
+
+  var btn = document.getElementById('hero-submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  saveLead({ origen: 'Formulario Hero', nombre, apellido, email, telefono: tel, capital, broker, info });
+
+  fetch('/api/hubspot', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      firstname: nombre,
+      lastname:  apellido,
+      email:     email,
+      phone:     tel,
+      message:   'Broker: ' + broker + ' | Capital: ' + capital + ' | Info: ' + info
+    })
+  }).catch(function(){});
+
+  setTimeout(function() {
+    document.getElementById('hero-form').style.display = 'none';
+    var s = document.getElementById('hero-success');
+    s.style.display = 'flex';
+    showToast('¡Solicitud enviada! Le contactaremos en menos de 24h.');
+  }, 600);
+}
+
+/* ========================
+   CONTACT FORM SUBMIT
+======================== */
+function handleContactSubmit(e) {
+  e.preventDefault();
+  var nombre   = document.getElementById('c-nombre').value.trim();
+  var apellido = document.getElementById('c-apellido').value.trim();
+  var email    = document.getElementById('c-email').value.trim();
+  var tel      = document.getElementById('c-code').value + ' ' + document.getElementById('c-tel').value.trim();
+  var capital  = document.getElementById('c-capital').value;
+  var broker   = document.getElementById('c-broker').value.trim();
+  var info     = document.getElementById('c-info').value.trim();
+  var privacy  = document.getElementById('c-privacy').checked;
+
+  if (!nombre || !apellido || !email || !tel || !capital || !broker) {
+    alert('Por favor complete todos los campos obligatorios (*).');
+    return;
+  }
+  if (!privacy) {
+    alert('Debe aceptar la política de privacidad para enviar el formulario.');
+    return;
+  }
+
+  var btn = document.getElementById('contact-submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  saveLead({ origen: 'Formulario Contacto', nombre, apellido, email, telefono: tel, capital, broker, info });
+
+  fetch('/api/hubspot', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      firstname: nombre,
+      lastname:  apellido,
+      email:     email,
+      phone:     tel,
+      message:   'Broker: ' + broker + ' | Capital: ' + capital + ' | Info: ' + info
+    })
+  }).catch(function(){});
+
+  setTimeout(function() {
+    document.getElementById('contact-form').style.display = 'none';
+    var s = document.getElementById('contact-success');
+    s.style.display = 'flex';
+    showToast('¡Consulta enviada! Le contactaremos muy pronto.');
+  }, 600);
+}
+
+/* ========================
+   CHATBOT
+======================== */
+var chatOpen = false;
+var chatStep = 0;
+var chatData = {};
+var chatQuestions = [
+  '👋 ¡Hola! Soy el asesor virtual de <strong>LexCapital</strong>. Estoy aquí para ayudarle a iniciar el proceso de recuperación de su capital. ¿Podría decirme su <strong>nombre</strong>?',
+  '¿Y su <strong>apellido</strong>?',
+  'Entendido. ¿Cuánto capital aproximado ha perdido? (por ejemplo: $15.000)',
+  '¿Con qué <strong>broker o plataforma</strong> ocurrió el fraude?',
+  'Por último, ¿cuál es su número de <strong>teléfono o WhatsApp</strong> para que un abogado le contacte?',
+  '¡Perfecto! Con su <strong>número de teléfono</strong> un especialista le llamará en las próximas 24 horas. ¿Desea también proporcionar su email para enviarle más información?'
+];
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  var bubble = document.getElementById('chat-bubble');
+  if (chatOpen) {
+    bubble.classList.add('open');
+    if (chatStep === 0) {
+      setTimeout(function() { botSay(chatQuestions[0]); chatStep = 1; }, 400);
+    }
+  } else {
+    bubble.classList.remove('open');
+  }
+}
+
+function botSay(html) {
+  var msgs = document.getElementById('chat-messages');
+  // typing indicator
+  var typing = document.createElement('div');
+  typing.className = 'typing-indicator';
+  typing.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+  msgs.appendChild(typing);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  setTimeout(function() {
+    msgs.removeChild(typing);
+    var msg = document.createElement('div');
+    msg.className = 'chat-msg bot';
+    msg.innerHTML = html;
+    msgs.appendChild(msg);
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 800);
+}
+
+function userSay(text) {
+  var msgs = document.getElementById('chat-messages');
+  var msg = document.createElement('div');
+  msg.className = 'chat-msg user';
+  msg.textContent = text;
+  msgs.appendChild(msg);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function chatSend() {
+  var input = document.getElementById('chat-input');
+  var val = input.value.trim();
+  if (!val) return;
+  input.value = '';
+  userSay(val);
+
+  if (chatStep === 1) {
+    chatData.nombre = val;
+    setTimeout(function() { botSay(chatQuestions[1]); chatStep = 2; }, 900);
+  } else if (chatStep === 2) {
+    chatData.apellido = val;
+    setTimeout(function() { botSay(chatQuestions[2]); chatStep = 3; }, 900);
+  } else if (chatStep === 3) {
+    chatData.capital = val;
+    setTimeout(function() { botSay(chatQuestions[3]); chatStep = 4; }, 900);
+  } else if (chatStep === 4) {
+    chatData.broker = val;
+    setTimeout(function() { botSay(chatQuestions[4]); chatStep = 5; }, 900);
+  } else if (chatStep === 5) {
+    chatData.telefono = val;
+    saveLead({
+      origen: 'Chatbot',
+      nombre: chatData.nombre || '',
+      apellido: chatData.apellido || '',
+      email: '',
+      telefono: chatData.telefono,
+      capital: chatData.capital,
+      broker: chatData.broker,
+      info: 'Lead capturado vía chatbot'
+    });
+    setTimeout(function() { botSay(chatQuestions[5]); chatStep = 6; }, 900);
+  } else if (chatStep === 6) {
+    chatData.email = val;
+    saveLead({
+      origen: 'Chatbot (email)',
+      nombre: chatData.nombre || '',
+      apellido: chatData.apellido || '',
+      email: chatData.email,
+      telefono: chatData.telefono || '',
+      capital: chatData.capital || '',
+      broker: chatData.broker || '',
+      info: 'Email añadido en segundo paso'
+    });
+    setTimeout(function() {
+      botSay('¡Muchas gracias, <strong>' + (chatData.nombre || 'estimado cliente') + '</strong>! Un abogado especializado le contactará en menos de 24 horas. Su caso es completamente confidencial. 🔒');
+      chatStep = 99;
+    }, 900);
+    showToast('Lead guardado correctamente.');
+  } else {
+    setTimeout(function() { botSay('Si tiene alguna otra pregunta, puede contactarnos directamente en <strong>consultas@lexcapital.com</strong> o llamarnos al <strong>+34 900 000 000</strong>.'); }, 900);
+  }
+}
+
+/* ========================
+   LEADS PANEL (código secreto)
+   Escriba "lexleads" en cualquier campo para abrir
+======================== */
+document.addEventListener('keydown', function(e) {
+  if (!window._leadsCode) window._leadsCode = '';
+  window._leadsCode += e.key;
+  if (window._leadsCode.slice(-9) === 'lexleads') {
+    openLeadsPanel();
+    window._leadsCode = '';
+  }
+  if (window._leadsCode.length > 20) window._leadsCode = window._leadsCode.slice(-20);
+});
+
+function openLeadsPanel() {
+  var panel = document.getElementById('leads-panel');
+  var wrap  = document.getElementById('leads-table-wrap');
+  var leads = getLeads();
+  if (leads.length === 0) {
+    wrap.innerHTML = '<p style="color:var(--sec);padding:16px 0">No hay leads registrados aún.</p>';
+  } else {
+    var html = '<table id="leads-table"><thead><tr><th>ID</th><th>Fecha</th><th>Origen</th><th>Nombre</th><th>Email</th><th>Teléfono</th><th>Capital</th><th>Broker</th></tr></thead><tbody>';
+    leads.forEach(function(l) {
+      html += '<tr><td>' + l.id + '</td><td>' + l.fecha + '</td><td>' + l.origen + '</td><td>' + l.nombre + ' ' + l.apellido + '</td><td>' + l.email + '</td><td>' + l.telefono + '</td><td>' + l.capital + '</td><td>' + l.broker + '</td></tr>';
+    });
+    html += '</tbody></table>';
+    html += '<p style="margin-top:12px;font-size:.78rem;color:var(--sec)">Total: ' + leads.length + ' leads</p>';
+    wrap.innerHTML = html;
+  }
+  panel.classList.add('open');
+}
+
+function closeLeadsPanel() {
+  document.getElementById('leads-panel').classList.remove('open');
+}
+</script>
+
+</body>
+</html>
