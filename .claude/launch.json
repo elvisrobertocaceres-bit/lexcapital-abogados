@@ -1,0 +1,11 @@
+﻿{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "abogados",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-s", ".", "-p", "4200"],
+      "port": 4200
+    }
+  ]
+}
