@@ -221,30 +221,35 @@
       transition: transform .35s cubic-bezier(.4,0,.2,1);
     }
     #fixed-form-panel.collapsed {
-      transform: translateX(calc(100% - 42px));
+      transform: translateX(calc(100% - 48px));
     }
     .fixed-panel-toggle {
       position: absolute;
-      left: -42px;
+      left: -48px;
       top: 50%;
       transform: translateY(-50%);
       background: var(--gold);
       color: var(--white);
       border: none;
-      border-radius: 8px 0 0 8px;
-      width: 42px;
-      height: 72px;
+      border-radius: 10px 0 0 10px;
+      width: 48px;
+      height: 140px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: -3px 0 12px rgba(139,105,20,.35);
-      font-size: .72rem;
+      box-shadow: -4px 0 16px rgba(139,105,20,.45);
+      font-size: .7rem;
       font-weight: 700;
       writing-mode: vertical-rl;
       text-orientation: mixed;
-      letter-spacing: .08em;
-      gap: 0;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      animation: pulse-tab 2.5s infinite;
+    }
+    @keyframes pulse-tab {
+      0%, 100% { box-shadow: -4px 0 16px rgba(139,105,20,.45); }
+      50%       { box-shadow: -4px 0 28px rgba(139,105,20,.75); }
     }
     #fixed-form-panel h3 {
       font-family: var(--font-title);
@@ -1042,6 +1047,7 @@
         <div class="alert-banner" style="margin-top:28px">
           <strong>⚠ Los plazos para reclamar son limitados</strong>
           <p>Según la jurisdicción, el derecho prescribe entre <strong>2 y 5 años</strong>. No espere más.</p>
+
         </div>
       </div>
 
