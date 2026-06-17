@@ -32,6 +32,7 @@ export async function onRequestPost({ request, env }) {
     email:     body.email     || '',
     phone:     body.phone     || '',
     message:   body.message   || '',
+    ...(body.adclid ? { hs_analytics_last_url: body.adclid } : {}),
   };
 
   // Verificar si el contacto ya existe por email

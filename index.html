@@ -179,10 +179,7 @@
       background: var(--white);
     }
     .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
-      align-items: center;
+      max-width: 680px;
     }
     .hero-title {
       font-family: var(--font-title);
@@ -194,143 +191,75 @@
     .hero-sub { color: var(--sec); margin-bottom: 30px; font-size: 1.02rem; }
     .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
 
-    /* Hero Form Card — oculto en desktop (reemplazado por el panel fijo) */
-    .hero-form-col { display: none; }
-    .hero-form-card {
-      background: var(--white);
-      border-radius: 14px;
-      box-shadow: 0 8px 40px rgba(0,0,0,.12);
-      padding: 36px 32px;
-    }
-
-    /* Panel fijo derecha — desktop */
-    #fixed-form-panel {
+    /* ========================
+       MODAL
+    ======================== */
+    /* Widget flotante */
+    #float-widget {
       position: fixed;
-      top: 80px;
-      right: 0;
-      width: 360px;
-      max-height: calc(100vh - 96px);
-      overflow-y: auto;
-      z-index: 800;
-      background: var(--white);
-      border-radius: 14px 0 0 14px;
-      box-shadow: -6px 0 32px rgba(0,0,0,.13);
-      padding: 28px 24px;
-      display: flex;
-      flex-direction: column;
-      transition: transform .35s cubic-bezier(.4,0,.2,1);
-    }
-    #fixed-form-panel.collapsed {
-      transform: translateX(calc(100% - 48px));
-    }
-    .fixed-panel-toggle {
-      position: absolute;
-      left: -48px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: var(--gold);
-      color: var(--white);
-      border: none;
-      border-radius: 10px 0 0 10px;
-      width: 48px;
-      height: 140px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: -4px 0 16px rgba(139,105,20,.45);
-      font-size: .7rem;
-      font-weight: 700;
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      animation: pulse-tab 2.5s infinite;
-    }
-    @keyframes pulse-tab {
-      0%, 100% { box-shadow: -4px 0 16px rgba(139,105,20,.45); }
-      50%       { box-shadow: -4px 0 28px rgba(139,105,20,.75); }
-    }
-    #fixed-form-panel h3 {
-      font-family: var(--font-title);
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    #fixed-form-panel > p {
-      font-size: .8rem;
-      color: var(--sec);
-      margin-bottom: 16px;
-    }
-
-    /* Botón flotante mobile para abrir el formulario */
-    #float-form-btn {
-      display: none;
-      position: fixed;
-      bottom: 100px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 940;
-      background: var(--gold);
-      color: var(--white);
-      border: none;
-      border-radius: 30px;
-      padding: 14px 28px;
-      font-size: .92rem;
-      font-weight: 700;
-      box-shadow: 0 6px 24px rgba(139,105,20,.5);
-      white-space: nowrap;
-      animation: pulse-btn 2s infinite;
-    }
-    @keyframes pulse-btn {
-      0%, 100% { box-shadow: 0 6px 24px rgba(139,105,20,.5); }
-      50%       { box-shadow: 0 6px 36px rgba(139,105,20,.8); }
-    }
-
-    /* Panel flotante mobile */
-    #float-form-panel {
-      display: none;
-      position: fixed;
-      inset: 0;
+      bottom: 20px;
+      right: 20px;
       z-index: 960;
-      background: rgba(0,0,0,.55);
-      align-items: flex-end;
-      justify-content: center;
+      width: 280px;
+      font-family: inherit;
+      filter: drop-shadow(0 6px 24px rgba(0,0,0,.22));
     }
-    #float-form-panel.open { display: flex; }
-    .float-panel-inner {
-      background: var(--white);
-      border-radius: 18px 18px 0 0;
-      padding: 24px 20px 32px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-    .float-panel-header {
+    #float-widget-header {
+      background: var(--gold);
+      color: var(--dark);
+      border-radius: 10px 10px 0 0;
+      padding: 11px 14px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
     }
-    .float-panel-header h3 {
-      font-family: var(--font-title);
-      font-size: 1.1rem;
+    #float-widget-header span { font-weight: 700; font-size: .85rem; }
+    #float-widget-toggle-icon { font-size: 1rem; transition: transform .25s; }
+    #float-widget.collapsed #float-widget-toggle-icon { transform: rotate(180deg); }
+    #float-widget-body {
+      background: #fff;
+      border-radius: 0 0 10px 10px;
+      padding: 16px 14px 14px;
+      transition: max-height .3s ease, opacity .3s ease;
+      overflow: hidden;
+      max-height: 600px;
+      opacity: 1;
+    }
+    #float-widget.collapsed #float-widget-body { max-height: 0; opacity: 0; padding: 0 14px; }
+    #float-widget-body h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: .95rem;
       font-weight: 700;
+      margin-bottom: 3px;
+      color: var(--dark);
     }
-    .float-panel-close {
-      background: none;
-      border: none;
-      font-size: 1.4rem;
-      color: var(--sec);
-      line-height: 1;
+    #float-widget-body > p { font-size: .72rem; color: var(--sec); margin-bottom: 12px; }
+    #float-widget .form-group { margin-bottom: 9px; }
+    #float-widget .form-group label { font-size: .73rem; }
+    #float-widget .form-group input,
+    #float-widget .form-group select { padding: 7px 10px; font-size: .82rem; }
+    #float-widget .phone-group { display: flex; gap: 6px; }
+    #float-widget .country-code { width: 90px; flex-shrink: 0; }
+    #float-widget .checkbox-row { margin-bottom: 8px; }
+    #float-widget .checkbox-row label { font-size: .72rem; }
+    #float-widget .submit-full { padding: 10px; font-size: .85rem; margin-top: 4px; }
+    #float-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 10px 0 6px;
+      gap: 8px;
     }
-    .hero-form-card h3 {
-      font-family: var(--font-title);
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-    .hero-form-card p { font-size: .85rem; color: var(--sec); margin-bottom: 22px; }
+    #float-success h4 { font-size: .95rem; font-weight: 700; color: var(--dark); }
+    #float-success p { font-size: .75rem; color: var(--sec); }
+    @media (max-width: 360px) { #float-widget { width: calc(100vw - 24px); right: 12px; } }
+
+    /* ========================
+       FORM SHARED STYLES
+    ======================== */
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
     .form-group label { font-size: .8rem; font-weight: 600; color: var(--sec); }
@@ -353,7 +282,6 @@
       background: var(--white);
     }
     .form-group textarea { resize: vertical; min-height: 72px; }
-    /* Phone with country code */
     .phone-group { display: flex; gap: 6px; }
     .phone-group select.country-code {
       width: 108px;
@@ -989,10 +917,6 @@
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .proceso-grid { grid-template-columns: 1fr 1fr; }
       .testimonios-grid { grid-template-columns: 1fr; }
-      .hero-form-col { display: none; }
-      /* En mobile: ocultar panel fijo y mostrar botón flotante */
-      #fixed-form-panel { display: none !important; }
-      #float-form-btn { display: block; }
       #chat-bubble { width: calc(100vw - 40px); right: 20px; }
     }
     @media (max-width: 560px) {
@@ -1017,13 +941,13 @@
         <li><a href="#brokers">Brokers</a></li>
         <li><a href="#testimonios">Casos</a></li>
       </ul>
-      <a href="#contacto" class="btn btn-gold nav-cta">Consulta Gratuita</a>
+      <button class="btn btn-gold nav-cta" onclick="openModal()">Consulta Gratuita</button>
       <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menú">
         <span></span><span></span><span></span>
       </button>
     </div>
     <div class="mobile-menu" id="mobile-menu">
-      <a href="#contacto" class="btn btn-gold" style="text-align:center" onclick="toggleMobile()">Consulta Gratuita</a>
+      <button class="btn btn-gold" style="text-align:center" onclick="openModal();toggleMobile()">Consulta Gratuita</button>
     </div>
   </div>
 </nav>
@@ -1034,118 +958,16 @@
 <section id="hero">
   <div class="container">
     <div class="hero-grid">
-      <!-- Left -->
-      <div>
-        <p class="eyebrow">Abogados especializados en fraude financiero</p>
-        <h1 class="hero-title">¿Le estafaron en un broker? Recuperamos su dinero.</h1>
-        <div class="gold-line"><span class="bar"></span><span class="diamond"></span></div>
-        <p class="hero-sub">Sin honorarios anticipados. Solo cobramos si recuperamos su capital.</p>
-        <div class="hero-btns">
-          <a href="#contacto" class="btn btn-gold">Consulta gratuita</a>
-          <a href="#proceso" class="btn btn-outline">Cómo funciona</a>
-        </div>
-        <div class="alert-banner" style="margin-top:28px">
-          <strong>⚠ Los plazos para reclamar son limitados</strong>
-          <p>Según la jurisdicción, el derecho prescribe entre <strong>2 y 5 años</strong>. No espere más.</p>
-
-        </div>
+      <p class="eyebrow">Abogados especializados en fraude financiero</p>
+      <h1 class="hero-title">¿Le estafaron en un broker? Recuperamos su dinero.</h1>
+      <div class="gold-line"><span class="bar"></span><span class="diamond"></span></div>
+      <p class="hero-sub">Sin honorarios anticipados. Solo cobramos si recuperamos su capital.</p>
+      <div class="hero-btns">
+        <button class="btn btn-gold" onclick="openModal()">Consulta gratuita</button>
       </div>
-
-      <!-- Right: Hero Form -->
-      <div class="hero-form-col">
-        <div class="hero-form-card" id="hero-form-wrap">
-          <h3>Evaluación gratuita de su caso</h3>
-          <p>Completa el formulario y un especialista se pondrá en contacto en menos de 24 horas.</p>
-          <form id="hero-form" onsubmit="handleHeroSubmit(event)" novalidate>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="h-nombre">Nombre *</label>
-                <input type="text" id="h-nombre" placeholder="Juan" required />
-              </div>
-              <div class="form-group">
-                <label for="h-apellido">Apellido *</label>
-                <input type="text" id="h-apellido" placeholder="García" required />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="h-email">Email *</label>
-                <input type="email" id="h-email" placeholder="juan@email.com" required />
-              </div>
-              <div class="form-group">
-                <label for="h-tel">Teléfono *</label>
-                <div class="phone-group">
-                  <select class="country-code" id="h-code" aria-label="Código de país">
-                    <option value="+54">🇦🇷 +54</option>
-                    <option value="+591">🇧🇴 +591</option>
-                    <option value="+55">🇧🇷 +55</option>
-                    <option value="+56">🇨🇱 +56</option>
-                    <option value="+57">🇨🇴 +57</option>
-                    <option value="+506">🇨🇷 +506</option>
-                    <option value="+53">🇨🇺 +53</option>
-                    <option value="+593">🇪🇨 +593</option>
-                    <option value="+503">🇸🇻 +503</option>
-                    <option value="+34" selected>🇪🇸 +34</option>
-                    <option value="+1">🇺🇸 +1</option>
-                    <option value="+502">🇬🇹 +502</option>
-                    <option value="+504">🇭🇳 +504</option>
-                    <option value="+52">🇲🇽 +52</option>
-                    <option value="+505">🇳🇮 +505</option>
-                    <option value="+507">🇵🇦 +507</option>
-                    <option value="+595">🇵🇾 +595</option>
-                    <option value="+51">🇵🇪 +51</option>
-                    <option value="+1-787">🇵🇷 +1787</option>
-                    <option value="+1-809">🇩🇴 +1809</option>
-                    <option value="+598">🇺🇾 +598</option>
-                    <option value="+58">🇻🇪 +58</option>
-                    <option value="+44">🇬🇧 +44</option>
-                    <option value="+49">🇩🇪 +49</option>
-                    <option value="+33">🇫🇷 +33</option>
-                    <option value="+39">🇮🇹 +39</option>
-                    <option value="+351">🇵🇹 +351</option>
-                    <option value="+31">🇳🇱 +31</option>
-                    <option value="+41">🇨🇭 +41</option>
-                    <option value="+61">🇦🇺 +61</option>
-                    <option value="+64">🇳🇿 +64</option>
-                  </select>
-                  <input type="tel" id="h-tel" placeholder="600 000 000" required />
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="h-capital">Capital perdido aproximado *</label>
-              <select id="h-capital" required>
-                <option value="">Seleccione un rango</option>
-                <option value="1k-10k">$1.000 – $10.000</option>
-                <option value="10k-25k">$10.000 – $25.000</option>
-                <option value="25k-50k">$25.000 – $50.000</option>
-                <option value="50k-100k">$50.000 – $100.000</option>
-                <option value="100k+">Más de $100.000</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="h-broker">Broker / plataforma *</label>
-              <input type="text" id="h-broker" placeholder="Nombre del broker o plataforma" required />
-            </div>
-            <div class="form-group">
-              <label for="h-info">Información adicional</label>
-              <textarea id="h-info" placeholder="Describa brevemente lo ocurrido..."></textarea>
-            </div>
-            <div class="checkbox-row">
-              <input type="checkbox" id="h-privacy" required />
-              <label for="h-privacy">He leído y acepto la <a href="#contacto">política de privacidad</a>. Consiento el tratamiento de mis datos para gestionar mi consulta. *</label>
-            </div>
-            <button type="submit" class="btn btn-gold submit-full" id="hero-submit-btn">Solicitar evaluación gratuita</button>
-          </form>
-          <div class="success-screen" id="hero-success">
-            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="32" cy="32" r="30" stroke="#8B6914" stroke-width="2.5" fill="#FBF7ED"/>
-              <path d="M20 32.5L28.5 41L44 24" stroke="#8B6914" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <h3>¡Solicitud recibida!</h3>
-            <p>Un especialista de LexCapital se pondrá en contacto con usted en menos de 24 horas para analizar su caso de forma totalmente confidencial.</p>
-          </div>
-        </div>
+      <div class="alert-banner" style="margin-top:28px">
+        <strong>⚠ Los plazos para reclamar son limitados</strong>
+        <p>Según la jurisdicción, el derecho prescribe entre <strong>2 y 5 años</strong>. No espere más.</p>
       </div>
     </div>
   </div>
@@ -1310,19 +1132,11 @@
      CONTACTO (info solo, sin formulario)
 ======================== -->
 <section id="contacto" class="section-pad" style="background:var(--cream)">
-  <div class="container" style="text-align:center">
-    <p class="eyebrow">Contáctenos</p>
-    <h2 class="section-title" style="margin-bottom:32px">Estamos disponibles para usted</h2>
-    <div style="display:inline-flex;flex-wrap:wrap;gap:24px;justify-content:center">
-      <div class="contact-info-box" style="min-width:260px;text-align:left">
-        <div class="contact-item"><span class="ci-label">Email</span><span class="ci-val">consultas@lexcapital.com</span></div>
-        <div class="contact-item"><span class="ci-label">Respuesta</span><span class="ci-val">Menos de 24 horas</span></div>
-        <div class="contact-item"><span class="ci-label">Honorarios</span><span class="ci-val">Solo si recuperamos</span></div>
-      </div>
-    </div>
-    <div style="margin-top:32px">
-      <a href="#" onclick="document.getElementById('fixed-form-panel').classList.remove('collapsed');return false;" class="btn btn-gold">Solicitar consulta gratuita →</a>
-    </div>
+  <div class="container" style="text-align:center;max-width:560px">
+    <p class="eyebrow">Sin compromiso</p>
+    <h2 class="section-title" style="margin-bottom:16px">Evaluamos su caso de forma gratuita</h2>
+    <p style="color:var(--sec);font-size:.95rem;margin-bottom:8px">Complete el formulario y un asesor especializado se pondrá en contacto con usted en menos de 24 horas para dar seguimiento a su caso.</p>
+    <p style="color:var(--sec);font-size:.85rem"><strong>Sin honorarios anticipados.</strong> Solo cobramos si recuperamos su capital.</p>
   </div>
 </section>
 
@@ -1345,120 +1159,6 @@
     </div>
   </div>
 </footer>
-
-<!-- ========================
-     PANEL FIJO DERECHA — DESKTOP
-======================== -->
-<div id="fixed-form-panel" class="collapsed">
-  <button class="fixed-panel-toggle" onclick="toggleFixedPanel()" id="fixed-panel-toggle-btn" aria-label="Abrir/cerrar formulario">CONSULTA GRATIS</button>
-  <h3>Evaluación gratuita</h3>
-  <p>Un especialista le contactará en menos de 24 horas.</p>
-  <form id="fixed-form" onsubmit="handleFixedSubmit(event)" novalidate>
-    <div class="form-row">
-      <div class="form-group">
-        <label for="fx-nombre">Nombre *</label>
-        <input type="text" id="fx-nombre" placeholder="Juan" required />
-      </div>
-      <div class="form-group">
-        <label for="fx-apellido">Apellido *</label>
-        <input type="text" id="fx-apellido" placeholder="García" required />
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="fx-email">Email *</label>
-      <input type="email" id="fx-email" placeholder="juan@email.com" required />
-    </div>
-    <div class="form-group">
-      <label for="fx-tel">Teléfono / WhatsApp *</label>
-      <div class="phone-group">
-        <select class="country-code" id="fx-code" aria-label="Código de país">
-          <option value="+54">🇦🇷 +54</option>
-          <option value="+55">🇧🇷 +55</option>
-          <option value="+56">🇨🇱 +56</option>
-          <option value="+57">🇨🇴 +57</option>
-          <option value="+34" selected>🇪🇸 +34</option>
-          <option value="+52">🇲🇽 +52</option>
-          <option value="+51">🇵🇪 +51</option>
-          <option value="+598">🇺🇾 +598</option>
-          <option value="+58">🇻🇪 +58</option>
-          <option value="+1">🇺🇸 +1</option>
-        </select>
-        <input type="tel" id="fx-tel" placeholder="600 000 000" required />
-      </div>
-    </div>
-    <div class="checkbox-row">
-      <input type="checkbox" id="fx-privacy" required />
-      <label for="fx-privacy">Acepto la <a href="#contacto">política de privacidad</a>. *</label>
-    </div>
-    <button type="submit" class="btn btn-gold submit-full">Consulta gratuita →</button>
-  </form>
-  <div class="success-screen" id="fixed-success">
-    <svg width="56" height="56" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="#8B6914" stroke-width="2.5" fill="#FBF7ED"/><path d="M20 32.5L28.5 41L44 24" stroke="#8B6914" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <h3>¡Solicitud recibida!</h3>
-    <p>Un especialista le contactará en menos de 24 horas.</p>
-  </div>
-</div>
-
-<!-- ========================
-     BOTÓN FLOTANTE MOBILE (formulario)
-======================== -->
-<button id="float-form-btn" onclick="openFloatForm()">📋 Evaluación gratuita</button>
-
-<!-- Panel deslizable mobile -->
-<div id="float-form-panel" onclick="closeFloatFormOutside(event)">
-  <div class="float-panel-inner">
-    <div class="float-panel-header">
-      <h3>Evaluación gratuita de su caso</h3>
-      <button class="float-panel-close" onclick="closeFloatForm()">✕</button>
-    </div>
-    <p style="font-size:.82rem;color:var(--sec);margin-bottom:16px">Un especialista le contactará en menos de 24 horas.</p>
-    <form id="float-form" onsubmit="handleFloatSubmit(event)" novalidate>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="f-nombre">Nombre *</label>
-          <input type="text" id="f-nombre" placeholder="Juan" required />
-        </div>
-        <div class="form-group">
-          <label for="f-apellido">Apellido *</label>
-          <input type="text" id="f-apellido" placeholder="García" required />
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="f-email">Email *</label>
-        <input type="email" id="f-email" placeholder="juan@email.com" required />
-      </div>
-      <div class="form-group">
-        <label for="f-tel">Teléfono *</label>
-        <div class="phone-group">
-          <select class="country-code" id="f-code" aria-label="Código de país">
-            <option value="+54">🇦🇷 +54</option>
-            <option value="+591">🇧🇴 +591</option>
-            <option value="+55">🇧🇷 +55</option>
-            <option value="+56">🇨🇱 +56</option>
-            <option value="+57">🇨🇴 +57</option>
-            <option value="+34" selected>🇪🇸 +34</option>
-            <option value="+52">🇲🇽 +52</option>
-            <option value="+51">🇵🇪 +51</option>
-            <option value="+598">🇺🇾 +598</option>
-            <option value="+58">🇻🇪 +58</option>
-            <option value="+1">🇺🇸 +1</option>
-          </select>
-          <input type="tel" id="f-tel" placeholder="600 000 000" required />
-        </div>
-      </div>
-      <div class="checkbox-row">
-        <input type="checkbox" id="f-privacy" required />
-        <label for="f-privacy">Acepto la <a href="#contacto">política de privacidad</a>. *</label>
-      </div>
-      <button type="submit" class="btn btn-gold submit-full">Consulta gratuita →</button>
-    </form>
-    <div class="success-screen" id="float-success">
-      <svg width="56" height="56" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="#8B6914" stroke-width="2.5" fill="#FBF7ED"/><path d="M20 32.5L28.5 41L44 24" stroke="#8B6914" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <h3>¡Solicitud recibida!</h3>
-      <p>Un especialista le contactará en menos de 24 horas.</p>
-    </div>
-  </div>
-</div>
 
 <!-- ========================
      CHATBOT
@@ -1504,6 +1204,62 @@
 </div>
 
 <!-- ========================
+     WIDGET FLOTANTE
+======================== -->
+<div id="float-widget">
+  <div id="float-widget-header" onclick="toggleFloatWidget()">
+    <span>📋 Consulta gratuita</span>
+    <span id="float-widget-toggle-icon">▲</span>
+  </div>
+  <div id="float-widget-body">
+    <h4>Evaluación sin coste</h4>
+    <p>Le contactamos en menos de 24 horas.</p>
+    <form id="float-form" onsubmit="handleFloatWidgetSubmit(event)" novalidate>
+      <div class="form-group">
+        <label for="fw-nombre">Nombre completo *</label>
+        <input type="text" id="fw-nombre" placeholder="Juan García" required />
+      </div>
+      <div class="form-group">
+        <label for="fw-email">Email *</label>
+        <input type="email" id="fw-email" placeholder="juan@email.com" required />
+      </div>
+      <div class="form-group">
+        <label for="fw-tel">Teléfono / WhatsApp *</label>
+        <div class="phone-group">
+          <select class="country-code" id="fw-code">
+            <option value="+54">🇦🇷 +54</option>
+            <option value="+55">🇧🇷 +55</option>
+            <option value="+56">🇨🇱 +56</option>
+            <option value="+57">🇨🇴 +57</option>
+            <option value="+34" selected>🇪🇸 +34</option>
+            <option value="+52">🇲🇽 +52</option>
+            <option value="+51">🇵🇪 +51</option>
+            <option value="+598">🇺🇾 +598</option>
+            <option value="+58">🇻🇪 +58</option>
+            <option value="+1">🇺🇸 +1</option>
+          </select>
+          <input type="tel" id="fw-tel" placeholder="600 000 000" required />
+        </div>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="fw-privacy" checked />
+        <label for="fw-privacy">Acepto la <a href="#contacto">política de privacidad</a>.</label>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="fw-terms" checked />
+        <label for="fw-terms">Acepto recibir información sobre mi caso.</label>
+      </div>
+      <button type="submit" class="btn btn-gold submit-full">Solicitar consulta</button>
+    </form>
+    <div id="float-success">
+      <svg width="44" height="44" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="#8B6914" stroke-width="2.5" fill="#FBF7ED"/><path d="M20 32.5L28.5 41L44 24" stroke="#8B6914" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h4>¡Recibido!</h4>
+      <p>Pronto un asesor se contactará con usted para darle seguimiento a su caso.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ========================
      HUBSPOT SCRIPT
 ======================== -->
 <script>
@@ -1533,92 +1289,49 @@
 ======================== -->
 <script>
 /* ========================
-   PANEL FIJO DESKTOP
+   MGID CLICK ID
 ======================== */
-var fixedPanelCollapsed = false;
-function toggleFixedPanel() {
-  fixedPanelCollapsed = !fixedPanelCollapsed;
-  var panel = document.getElementById('fixed-form-panel');
-  var btn   = document.getElementById('fixed-panel-toggle-btn');
-  panel.classList.toggle('collapsed', fixedPanelCollapsed);
-  btn.textContent = fixedPanelCollapsed ? 'CONSULTA GRATIS' : '✕ CERRAR';
-}
-
-function handleFixedSubmit(e) {
-  e.preventDefault();
-  var nombre   = document.getElementById('fx-nombre').value.trim();
-  var apellido = document.getElementById('fx-apellido').value.trim();
-  var email    = document.getElementById('fx-email').value.trim();
-  var tel      = document.getElementById('fx-code').value + ' ' + document.getElementById('fx-tel').value.trim();
-  var privacy  = document.getElementById('fx-privacy').checked;
-
-  if (!nombre || !apellido || !email || !tel) {
-    alert('Por favor complete todos los campos obligatorios (*).');
-    return;
-  }
-  if (!privacy) {
-    alert('Debe aceptar la política de privacidad para continuar.');
-    return;
-  }
-
-  saveLead({ origen: 'Panel Fijo Desktop', nombre, apellido, email, telefono: tel, capital: '', broker: '', info: '' });
-
-  fetch('/api/hubspot', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ firstname: nombre, lastname: apellido, email, phone: tel,
-      message: 'Broker: ' + broker + ' | Capital: ' + capital })
-  }).catch(function(){});
-
-  document.getElementById('fixed-form').style.display = 'none';
-  document.getElementById('fixed-success').style.display = 'flex';
-  showToast('¡Solicitud enviada! Le contactaremos en menos de 24h.');
-}
+var mgidClickId = (function() {
+  var p = new URLSearchParams(window.location.search);
+  var id = p.get('adclid') || '';
+  if (id) sessionStorage.setItem('mgid_adclid', id);
+  return id || sessionStorage.getItem('mgid_adclid') || '';
+})();
 
 /* ========================
-   PANEL FLOTANTE MOBILE
+   WIDGET FLOTANTE
 ======================== */
-function openFloatForm() {
-  document.getElementById('float-form-panel').classList.add('open');
-  document.body.style.overflow = 'hidden';
+function toggleFloatWidget() {
+  document.getElementById('float-widget').classList.toggle('collapsed');
 }
-function closeFloatForm() {
-  document.getElementById('float-form-panel').classList.remove('open');
-  document.body.style.overflow = '';
+function openModal() {
+  // scroll a la vista del widget y expandirlo si está colapsado
+  var w = document.getElementById('float-widget');
+  w.classList.remove('collapsed');
+  w.scrollIntoView({ behavior: 'smooth', block: 'end' });
 }
-function closeFloatFormOutside(e) {
-  if (e.target === document.getElementById('float-form-panel')) closeFloatForm();
-}
-
-function handleFloatSubmit(e) {
+function handleFloatWidgetSubmit(e) {
   e.preventDefault();
-  var nombre   = document.getElementById('f-nombre').value.trim();
-  var apellido = document.getElementById('f-apellido').value.trim();
-  var email    = document.getElementById('f-email').value.trim();
-  var tel      = document.getElementById('f-code').value + ' ' + document.getElementById('f-tel').value.trim();
-  var privacy  = document.getElementById('f-privacy').checked;
-
-  if (!nombre || !apellido || !email || !tel) {
-    alert('Por favor complete todos los campos obligatorios (*).');
-    return;
+  var fullname = document.getElementById('fw-nombre').value.trim();
+  var email    = document.getElementById('fw-email').value.trim();
+  var tel      = document.getElementById('fw-code').value + ' ' + document.getElementById('fw-tel').value.trim();
+  var privacy  = document.getElementById('fw-privacy').checked;
+  if (!fullname || !email || !document.getElementById('fw-tel').value.trim()) {
+    alert('Complete todos los campos obligatorios.'); return;
   }
-  if (!privacy) {
-    alert('Debe aceptar la política de privacidad para continuar.');
-    return;
-  }
-
-  saveLead({ origen: 'Formulario Flotante', nombre, apellido, email, telefono: tel, capital: '', broker: '', info: '' });
-
+  if (!privacy) { alert('Debe aceptar la política de privacidad.'); return; }
+  var parts = fullname.split(' ');
+  var firstname = parts[0];
+  var lastname  = parts.slice(1).join(' ') || '-';
+  saveLead({ origen: 'Widget', nombre: firstname, apellido: lastname, email: email, telefono: tel, capital: '', broker: '', info: '' });
   fetch('/api/hubspot', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ firstname: nombre, lastname: apellido, email, phone: tel,
-      message: 'Broker: ' + broker + ' | Capital: ' + capital })
+    body: JSON.stringify({ firstname: firstname, lastname: lastname, email: email, phone: tel, message: 'Lead desde LexCapital', adclid: mgidClickId })
   }).catch(function(){});
-
   document.getElementById('float-form').style.display = 'none';
   document.getElementById('float-success').style.display = 'flex';
-  showToast('¡Solicitud enviada! Le contactaremos en menos de 24h.');
+  showToast('Pronto un asesor se contactará para dar seguimiento a su caso.');
 }
 
 /* ========================
@@ -1691,104 +1404,6 @@ function toggleMobile() {
 }
 
 /* ========================
-   HERO FORM SUBMIT
-======================== */
-function handleHeroSubmit(e) {
-  e.preventDefault();
-  var nombre   = document.getElementById('h-nombre').value.trim();
-  var apellido = document.getElementById('h-apellido').value.trim();
-  var email    = document.getElementById('h-email').value.trim();
-  var tel      = document.getElementById('h-code').value + ' ' + document.getElementById('h-tel').value.trim();
-  var capital  = document.getElementById('h-capital').value;
-  var broker   = document.getElementById('h-broker').value.trim();
-  var info     = document.getElementById('h-info').value.trim();
-  var privacy  = document.getElementById('h-privacy').checked;
-
-  if (!nombre || !apellido || !email || !tel || !capital || !broker) {
-    alert('Por favor complete todos los campos obligatorios (*).');
-    return;
-  }
-  if (!privacy) {
-    alert('Debe aceptar la política de privacidad para continuar.');
-    return;
-  }
-
-  var btn = document.getElementById('hero-submit-btn');
-  btn.disabled = true;
-  btn.textContent = 'Enviando...';
-
-  saveLead({ origen: 'Formulario Hero', nombre, apellido, email, telefono: tel, capital, broker, info });
-
-  fetch('/api/hubspot', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      firstname: nombre,
-      lastname:  apellido,
-      email:     email,
-      phone:     tel,
-      message:   'Broker: ' + broker + ' | Capital: ' + capital + ' | Info: ' + info
-    })
-  }).catch(function(){});
-
-  setTimeout(function() {
-    document.getElementById('hero-form').style.display = 'none';
-    var s = document.getElementById('hero-success');
-    s.style.display = 'flex';
-    showToast('¡Solicitud enviada! Le contactaremos en menos de 24h.');
-  }, 600);
-}
-
-/* ========================
-   CONTACT FORM SUBMIT
-======================== */
-function handleContactSubmit(e) {
-  e.preventDefault();
-  var nombre   = document.getElementById('c-nombre').value.trim();
-  var apellido = document.getElementById('c-apellido').value.trim();
-  var email    = document.getElementById('c-email').value.trim();
-  var tel      = document.getElementById('c-code').value + ' ' + document.getElementById('c-tel').value.trim();
-  var capital  = document.getElementById('c-capital').value;
-  var broker   = document.getElementById('c-broker').value.trim();
-  var info     = document.getElementById('c-info').value.trim();
-  var privacy  = document.getElementById('c-privacy').checked;
-
-  if (!nombre || !apellido || !email || !tel || !capital || !broker) {
-    alert('Por favor complete todos los campos obligatorios (*).');
-    return;
-  }
-  if (!privacy) {
-    alert('Debe aceptar la política de privacidad para enviar el formulario.');
-    return;
-  }
-
-  var btn = document.getElementById('contact-submit-btn');
-  btn.disabled = true;
-  btn.textContent = 'Enviando...';
-
-  saveLead({ origen: 'Formulario Contacto', nombre, apellido, email, telefono: tel, capital, broker, info });
-
-  fetch('/api/hubspot', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      firstname: nombre,
-      lastname:  apellido,
-      email:     email,
-      phone:     tel,
-      message:   'Broker: ' + broker + ' | Capital: ' + capital + ' | Info: ' + info
-    })
-  }).catch(function(){});
-
-  setTimeout(function() {
-    document.getElementById('contact-form').style.display = 'none';
-    var s = document.getElementById('contact-success');
-    s.style.display = 'flex';
-    showToast('¡Consulta enviada! Le contactaremos muy pronto.');
-  }, 600);
-}
-
-/* ========================
    CHATBOT
 ======================== */
 var chatOpen = false;
@@ -1818,7 +1433,6 @@ function toggleChat() {
 
 function botSay(html) {
   var msgs = document.getElementById('chat-messages');
-  // typing indicator
   var typing = document.createElement('div');
   typing.className = 'typing-indicator';
   typing.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
